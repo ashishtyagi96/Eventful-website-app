@@ -1,0 +1,230 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Raleway', sans-serif;
+
+}
+html{
+    width:100%;
+    height:100%;
+}
+body{
+    width:100%;
+    height:100%;
+    background-image: url("dj1.jpg");
+    background-size: 1301px 678px;
+    background-repeat: no-repeat;
+}
+.content_cen{
+    position: relative;
+    background-color: rgba(0,0,0,0.7);
+    width:40%;
+    height:85%;
+    margin:auto;
+    top:8.5%;
+}
+.log_in_out{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    height:15%;
+    background-color: rgba(0,253,255,0.7);
+}
+
+.log_now{
+    margin: auto;
+    color:white;
+    font-size: 200%;
+}
+.user_pass{
+    width: 80%;
+    height: 85%;
+    margin:auto;
+}
+.user_pass input[type="email"]{
+    outline: none;
+    text-align: start;
+    border: 1px solid rgba(0,253,255,0.63);
+    background: none;
+    font-size: 100%;
+    width:100%;
+    color: white;
+    padding: 1em 1em 1em 3em;
+    margin-top: 10%;
+}
+.fname{
+    outline: none;
+    text-align: start;
+    border: 1px solid rgba(0,253,255,0.63);
+    background: none;
+    font-size: 100%;
+    width:45%;
+    color: white;
+    padding: 1em 1em 1em 1em;
+    margin-top: 10%;
+    float: left;
+}
+.lname{
+    outline: none;
+    text-align: start;
+    border: 1px solid rgba(0,253,255,0.63);
+    background: none;
+    font-size: 100%;
+    width:45%;
+    color: white;
+    padding: 1em 1em 1em 1em;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+.user_pass input[type="password"]{
+    outline: none;
+    text-align: start;
+    border: 1px solid rgba(0,253,255,0.63);
+    background: none;
+    font-size: 100%;
+    width:100%;
+    color: white;
+    padding: 1em 1em 1em 3em;
+    margin-top:10%;
+}
+.icon1{
+    position: absolute;
+    color: white;
+    top:41.3%;
+    left: 12%;
+}
+.icon2{
+    position: absolute;
+    color: white;
+    top:57.3%;
+    left: 12%;
+}
+.icon3{
+    position: absolute;
+    color: white;
+    top:73.3%;
+    left: 12%;
+}
+.rem_me{
+    font-size: 1.1em;
+    margin: auto;
+    margin-top: 10%;
+}
+.rem{
+    padding-left: 1em;
+    padding-right: 10em;
+    color: white;
+}
+.conti_with{
+    margin:auto;
+    text-align: center;
+    color: white;
+    font-size: 1.1em;
+    margin-top: 5%;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.social_icon a{
+    text-decoration: none;
+    position: absolute;
+    color: white;
+    float: right;
+}
+.social_icon{
+    margin-top: 2%;
+}
+.social_icon a.fa{
+    font-size: 0.9em;
+    line-height: 2.8em;
+    text-align: center;
+    margin: 0 5px;
+    width: 90px;
+    height: 40px;
+}
+.fb,.tw,.pi,.gp{
+    transition-duration: 0.5s;
+    border-style: solid;
+    border: 3px solid rgba(0,253,255,0.63);
+}
+.user_pass li .fb{
+    margin: auto;
+    margin-left: 1%;
+}
+.user_pass li .tw{
+    margin: auto;
+    margin-left: 21%;
+}
+.user_pass li .pi{
+    margin: auto;
+    margin-left: 41%;
+}
+.user_pass li .gp{
+    margin: auto;
+    margin-left: 61%;
+}
+.user_pass input[type="submit"]{
+    color: #fff;
+    background: rgba(0, 253, 255, 0.63);
+    border: none;
+    padding: .5em 4em;
+    outline: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-top: 2.5em;
+    margin-left: 5em;
+
+
+}
+.user_pass input[type="submit"]:hover{
+    box-shadow: inset 0 0 0 2px rgba(0, 253, 255, 0.63);
+}
+.fb:hover{
+    transition-duration: 0.5s;
+    background-color: rgb(59,89,152);
+    border-color: rgb(59,89,152);
+}
+.tw:hover{
+    transition-duration: 0.5s;
+    background-color: rgb(0,172,237);
+    border-color: rgb(0,172,237);
+}
+.pi:hover{
+    transition-duration: 0.5s;
+    background-color: rgb(203,32,39);
+    border-color: rgb(203,32,39);
+}
+.gp:hover{
+    transition-duration: 0.5s;
+    background-color: rgb(221,75,57);
+    border-color: rgb(221,75,57);
+}
+.create_acc{
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 50%;
+    font-size: 120%;
+}
+.or{
+    color:white;
+}
+.home_but{
+
+    font-family: 'Raleway', sans-serif;
+    position: absolute;
+    top:5.5%;
+    left:65.5%;
+}
+.home_but_in{
+    color:rgba(0, 253, 255, 0.63);
+}
+
+
+

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Saved</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="newfi.css">
+    <link rel="stylesheet" href="newf.css">
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><b>EVENTFULL</b></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+
+                    {{#if user}}
+                        <!--<li><a href="/browse">Browse Events</a></li>-->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{user.first_name}} {{user.last_name}}
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/saved">Saved</a></li>
+                                <li><a href="account">Account Settings</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+
+
+                    {{else}}
+
+                        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up </a></li>
+                        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    {{/if}}
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+<div class="mess"></div>
+<div class="top_cont">
+    <div class="name_dis">
+        {{#if user}}
+            <h1><b>{{user.first_name}} {{user.last_name}}</b></h1>
+        {{/if}}
+    </div>
+    <div class="options_ch">
+        <div class="placing_i">
+            <div class="upcoming" onclick="switching1()">
+                {{#if user}}
+                    <h5 class="count_u">{{user.upcoming_events.count}}</h5>
+                {{/if}}
+                <h5 class="u_h">UPCOMING EVENTS</h5>
+            </div>
+            <div class="saved" onclick="switching2()">
+                {{#if user}}
+                    <h5 class="count_s">{{user.saved_events.count}}</h5>
+                {{/if}}
+                <h5 class="p_h">SAVED EVENTS</h5>
+            </div>
+            <div class="past_events" onclick="switching3()">
+                <h5 class="pa_h">PAST EVENTS</h5>
+            </div>
+        </div>
+        <div class="active_h">
+            <div class="upcoming_a"></div>
+            <div class="saved_a"></div>
+            <div class="past_events_a"></div>
+        </div>
+    </div>
+</div>
+<div class="center_divi">
+    <div class="up_div">
+        {{#unless user.upcoming_events.events}}
+                <img class="img_divi" src="https://cdn.evbstatic.com/s3-build/perm_001/ba5ff3/django/images/pages/mytickets/no-dates.png" height="250" width="250">
+                <div class="dis_but">
+                    <a href="/browse"><button class="butt_1" type="submit" formaction="/browse"><b>DISCOVER EVENTS</b></button></a>
+                </div>
+        {{else}}
+            {{#each user.upcoming_events.events}}
+                <div class='container1 demo-3 ct' id="{{@index}}">
+                    <ul class='grid cs-style-3'>
+                        <li>
+                            <figure>
+                                <img class='img_div' src='{{this.img_link}}' alt='img01'>
+                                <div class='info_div'>
+                                    <div class='time_div'>{{this.event_date}}</div>
+                                    <div class='name_div'><b>{{this.event_name}}</b></div>
+                                    <div class='location_div'>{{this.event_location}}</div>
+                                </div>
+                                <figcaption>
+                                    <h3><button type='button' class='btn btn-primary btn-sm ndt'><b>Number of Tickets : {{this.n_tic}}</b></button></h3>
+                                    <a>
+                                        <span class='glyphicon glyphicon-share-alt at' title='share'></span>
+                                        <span class='glyphicon glyphicon-road nt' title='navigate' onclick='window.location.href="https://www.google.co.in/maps/dir/"'></span>
+                                    </a>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                </div>
+            {{/each}}
+        {{/unless}}
+    </div>
+    <div class="sa_div">
+        {{#unless user.saved_events.count}}
+            <img class="img_divi" src="https://cdn.evbstatic.com/s3-build/perm_001/4e34f5/django/images/pages/saved_events/no_events.png" height="250" width="250">
+        {{else}}
+            {{#each user.saved_events.events}}
+                <div class='container1 demo-3 ct' id="{{@index}}">
+                    <ul class='grid cs-style-3'>
+                        <li>
+                            <figure>
+                                <img class='img_div' src='{{this.img_link}}' alt='img01'>
+                                <div class='info_div'>
+                                    <div class='time_div'>{{this.event_date}}</div>
+                                    <div class='name_div'><b>{{this.event_name}}</b></div>
+                                    <div class='location_div'>{{this.event_location}}</div>
+                                </div>
+                                <figcaption>
+                                    <h3><button type='button' class='btn btn-primary btn-sm ddt'><b>BUY TICKETS</b></button></h3>
+                                    <a>
+                                        <span class='glyphicon glyphicon-share-alt at' title='share'></span>
+                                        <span class='glyphicon glyphicon-bookmark bt' title='unsave' onclick='unsaved_function(this)'></span>
+                                    </a>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                </div>
+            {{/each}}
+
+        {{/unless}}
+    </div>
+    <div class="pa_div">
+        {{#unless user.past_events.events}}
+                <img class="img_divi" src="https://cdn.evbstatic.com/s3-build/perm_001/ba5ff3/django/images/pages/mytickets/no-dates.png" height="250" width="250">
+                <div class="dis_but">
+                    <a href="/browse"><button class="butt_1" type="submit" href=""><b>DISCOVER EVENTS</b></button></a>
+                </div>
+        {{else}}
+            {{#each user.past_events.events}}
+                <div class='container1 demo-3 ct' id="{{@index}}">
+                    <ul class='grid cs-style-3'>
+                        <li>
+                            <figure>
+                                <img class='img_div' src='{{this.img_link}}' alt='img01'>
+                                <div class='info_div'>
+                                    <div class='time_div'>{{this.event_date}}</div>
+                                    <div class='name_div'><b>{{this.event_name}}</b></div>
+                                    <div class='location_div'>{{this.event_location}}</div>
+                                </div>
+                                <figcaption>
+                                    <h3><button type='button' class='btn btn-primary btn-sm ndt'><b>Number of Tickets : {{this.n_tic}}</b></button></h3>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                </div>
+            {{/each}}
+        {{/unless}}
+    </div>
+</div>
+<div class="closing_chat" onclick="done_d()">CHATBOT MESSENGER</div>
+<div id='bodybox'>
+
+    <div id='chatborder'>
+        <p id="chatlog7" class="chatlog">&nbsp;</p>
+        <p id="chatlog6" class="chatlog">&nbsp;</p>
+        <p id="chatlog5" class="chatlog">&nbsp;</p>
+        <p id="chatlog4" class="chatlog">&nbsp;</p>
+        <p id="chatlog3" class="chatlog">&nbsp;</p>
+        <p id="chatlog2" class="chatlog">&nbsp;</p>
+        <p id="chatlog1" class="chatlog">&nbsp;</p>
+        <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type here to talk to me." onfocus="placeHolder()">
+    </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhbDk6sYpBA7eh4K4TMzgrY8--KXQmh68&v=3.exp&libraries=places"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+<script src="js/toucheffects.js"></script>
+<script src="newfile.js"></script>
+<script src="newff.js"></script>
+
+</body>
+</html>

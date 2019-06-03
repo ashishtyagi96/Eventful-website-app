@@ -1,0 +1,251 @@
+<!-- views/layouts/main.handlebars -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="User Authentication">
+    <meta name="author" content="">
+    <title>User Authentication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="newfi.css">
+
+    <link rel="stylesheet" href="newf.css">
+
+</head>
+
+<body>
+    <header>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/"><b>EVENTFULL</b></a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav navbar-right">
+                                <!--<li><a href="/browse">Browse Events</a></li>-->
+                                {{#if user}}
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{user.first_name}} {{user.last_name}}
+                                            <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/saved">Saved</a></li>
+                                            <li><a href="/account">Account Settings</a></li>
+                                            <li><a href="/logout">Logout</a></li>
+                                        </ul>
+                                    </li>
+
+
+                                {{else}}
+
+                                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up </a></li>
+                                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                                {{/if}}
+                                </ul>
+                        </div>
+
+                    </div>
+                </nav>
+    </header>
+    <div class="cen_buy1" onclick="closin(this)">
+
+    </div>
+    <div class="cen_buy">
+        <div class="p1">
+            <div class="ch1">
+                <img src="#" class="img_check">
+                <div class="infor">
+                    <div class="in_time"></div>
+                    <div class="in_name"></div>
+                    <div class="in_location"></div>
+                </div>
+            </div>
+            <div class="ch2">
+                <span class="glyphicon glyphicon-remove" onclick="closin()"></span>
+                {{#if user}}
+                    <div class="tic_head">
+                        <h2>TICKETS</h2>
+                    </div>
+                    <div class="price"><h5><span class="head_price">Price:</span>&nbsp &nbsp<span class="fa fa-rupee rs"></span></h5><p>900</p></div>
+                    <div class="no_ticket">
+                        <div class="num_tic"><span class="head_price">Number of Tickets:</span>
+                            <span class="glyphicon glyphicon-minus sign_m" onclick="subtract()"></span>
+                            <span class="tic_count">0</span>
+                            <span class="glyphicon glyphicon-plus sign_p" onclick="adding()"></span>
+                        </div>
+
+                    </div>
+                    <div class="total">
+                        <span class="t_head">Amount Payable:</span><span class="multiple">0</span><span class="multiply">X</span><span class="base_p">900</span>
+                        <span class="sign_e">:&nbsp&nbsp&nbsp<span class="fa fa-rupee rs1"></span>&nbsp</span><span class="total_pay">0</span>
+                    </div>
+                    <div class="strip_try">
+                        <form action="/charge" method="post">
+                            <script
+                                    src="https://checkout.stripe.com/checkout.js"
+                                    class="stripe-button st_but"
+                                    data-key="pk_test_1IWArPOKjroy11OHe69F5gMI"
+                                    data-amount="0"
+                                    data-name="test"
+                                    data-description="testing payment stripe"
+                                    data-locale="auto"
+                                    data-currency="inr"
+                                    data-label="BUY TICKETS"
+                            >
+                            </script>
+                            <input type="hidden" class="send_img" name="img">
+                            <input type="hidden" class="time" name="time">
+                            <input type="hidden" class="name" name="name">
+                            <input type="hidden" class="location" name="location">
+                            <input type="hidden" class="num_tic" name="number_tickets">
+                            <input type="hidden" class="total_pay" name="amount_a">
+                            <button type="submit" class="btn warning last_sub" onclick="stripe_calling()">Pay</button>
+                        </form>
+                    </div>
+                {{else}}
+
+                    <script
+                            src="https://checkout.stripe.com/checkout.js"
+                            class="stripe-button st_but"
+                            data-key="pk_test_1IWArPOKjroy11OHe69F5gMI"
+                            data-amount="0"
+                            data-name="EVENTFULL"
+                            data-description="PAYMENT PORTAL"
+                            data-locale="auto"
+                            data-currency="inr"
+                            data-label="BUY TICKETS"
+                    >
+                    </script>
+                    <div class="log_in_out"><p>Login Now</p></div>
+                    <div class="user_pass">
+                        <form action="/login" method="post">
+                            <span class="glyphicon glyphicon-user icon1"></span>
+                            <input placeholder="E-mail" name="username" type="email" autocomplete="off" required>
+                            <span class="glyphicon glyphicon-lock icon2"></span>
+                            <input placeholder="Password" name="password" type="password" autocomplete="off" required>
+                            <div class="rem_me">
+                                <span class="rem">
+                                    <input type="checkbox"><span class="remm">Remember Me</span>
+                                </span>
+                                <a href="#">Forgot Password</a>
+                            </div>
+                            <!--<div class="conti_with">-->
+                                <!--<p>Continue with</p>-->
+                            <!--</div>-->
+                            <!--<div class="social_icon">-->
+                                <!--<ul>-->
+                                    <!--<li>-->
+                                        <!--<a href="#" class="fa fa-facebook fb"></a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                        <!--<a href="#" class="fa fa-twitter tw"></a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                        <!--<a href="#" class="fa fa-google-plus gp" ></a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                        <!--<a href="#" class="fa fa-pinterest pi"></a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                            <input type="submit" value="Login">
+                            <div class="create_acc">
+                                <span class="or">or</span><a href="signup.html"> create new account?</a>
+                            </div>
+
+                        </form>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+
+    </div>
+    {{#if user}}
+        <div class="mess">
+            Saved
+        </div>
+    {{else}}
+        <div class="mess">
+            Need To Login
+        </div>
+    {{/if}}
+    <div class="back_pic" style="width: 100%;height: 490px;background-image: url('bADIA.jpg');"></div>
+    <div class="center_search">
+        <div class="head_cen">
+            <h1>Find your next experience</h1>
+        </div>
+        <div class="search_form">
+            <div class="form_hai">
+                <div class="search1">
+                    <div class="autocomplete-component">
+                        <input name="q" type="text" class="input1"  size="35" placeholder="Search events" autocomplete="off" title="Search events or categories">
+                    </div>
+                </div>
+                <div class="search2">
+                    <input id="location_2"name="loc" type="text" class="input2" size="25" placeholder="City or location" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" value="" title="Enter city or location">
+                </div>
+                <div class="drop_down">
+                    <div class="responsive-form__select custom-select-container clrfix">
+                        <div class="custom-select-arrow"></div>
+                        <select name="date" class="input3" role="listbox" dorsal-guid="6360746f-c703-e0f7-e4cc-b672fd6ef016" data-xd-wired="select-box">
+                            <option value="" selected="selected">All Dates</option>
+                            <option value="today">Today</option>
+                            <option value="tomorrow">Tomorrow</option>
+
+                            <option value="next_month">Next Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sub_but">
+                    <input type="submit" class="sub_but_click" value="Search" onclick="searching_sub()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="event_for">
+        <div class="event_for_sim"><h3>Events for you in</h3></div>
+        <div class="event_for_dy"><input type="text" id="output1" placeholder="-"  spellcheck="false" onkeyup="cancel_but()"><button id="close_but" type="button" onclick="closing()"><i class="material-icons">close</i></button></div>
+    </div>
+    <div id="page_succ">
+
+
+    </div>
+    <div class="closing_chat" onclick="done_d()">CHATBOT MESSENGER</div>
+    <div id='bodybox'>
+
+        <div id='chatborder'>
+            <p id="chatlog7" class="chatlog">&nbsp;</p>
+            <p id="chatlog6" class="chatlog">&nbsp;</p>
+            <p id="chatlog5" class="chatlog">&nbsp;</p>
+            <p id="chatlog4" class="chatlog">&nbsp;</p>
+            <p id="chatlog3" class="chatlog">&nbsp;</p>
+            <p id="chatlog2" class="chatlog">&nbsp;</p>
+            <p id="chatlog1" class="chatlog">&nbsp;</p>
+            <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type here to talk to me." onfocus="placeHolder()">
+        </div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhbDk6sYpBA7eh4K4TMzgrY8--KXQmh68&v=3.exp&libraries=places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/toucheffects.js"></script>
+    <script src="newfile.js"></script>
+    <script src="newff.js"></script>
+</body>
+</html>
