@@ -5,9 +5,9 @@ var smtpConfig = {
     service: 'Gmail',
 
     auth: {
-        user: 'eventfullmailer@gmail.com',
-        pass: 'eventfull#2017'
-    }
+        user: 'your email id',   //enter your email id from which you want to send emails
+        pass: 'its password'     // enter the password of the email id
+    }                            // enable less secured app in google console
 
 };
 

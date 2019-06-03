@@ -1,0 +1,32 @@
+This is A website for Events near you made using handlebars for dynamic data rendering.
+
+# Stacks used :-
+    1) HTML
+    2) CSS
+    3) handlebars
+    4) google maps api, stripe api, api.ai api
+    5) NodeJS
+    6) ExpressJS
+    7) mongoDB
+
+# Setting up project on your system :-
+    1) Clone this repository to you local system.
+    2) Go to the folder /Eventful-website-app 
+    3) Run following command  in your terminal inside this repository for installing all dependencies :-
+         -> npm install
+    4) Setting up mongoDB database :-
+         -> install mongoDB into your system.
+         -> After installing mongoDB create database with name 'users'.
+         -> Use database 'users' and create 3 collections 'events' , 'hotel' and 'localUsers'.
+	 -> From Folder 'database file load json data into respective collections.
+         -> Your database is ready.
+    5) Get google maps api and insert it in file /testing.html in the given space (remove [] ).
+    6) Get stripe api for payment purpose and insert it in file index.js ('your stripe API key').
+    7) Get API.ai API key for chatbot and insert it into file index.js ('Enter your api.ai API key').
+    8) Enter your email and password from which your want to send automated emails in the file 'functions.js'  ('your email id' and 'your       password').
+    9) Now run following command in terminal :- 
+         -> node index.js                          // starting your node server at port 3000!
+    10) Go to your browser and enter :-
+         -> http://localhost:3000                  // your main page is running.
+    11) Your WebApp is up and running.
+    12) Can see snaps of project frontend in folder 'eventsApp(snapshots)'.

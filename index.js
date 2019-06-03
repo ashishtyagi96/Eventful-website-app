@@ -16,7 +16,7 @@ var path = require('path');
 var config = require('./config.js');
 var funct = require('./functions.js');
 var app = express();
-var stripe=require('stripe')('sk_test_y4WijxYKuXwRwMcdaEOQPCFo');
+var stripe=require('stripe')('your stripe API key');   // enter your stripe API key for payment
 var bodyParser=require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 var apiai = require('apiai');
 
-var apiAi = apiai("b9b881174b53430ca11b376a0208e303 ");
+var apiAi = apiai("Enter your API.ai API key");       // enter your api.ai key here for chatbot
 
 
 
