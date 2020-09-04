@@ -17,7 +17,7 @@
     "express": "^3.5.0",
     "express-handlebars": "^3.0.0",
     "fs": "0.0.1-security",
-    "mongodb": "^2.2.11",
+    "mongodb": "^3.1.13",
     "node-schedule": "^1.2.5",
     "nodemailer": "^4.4.0",
     "nodemailer-smtp-transport": "^2.7.4",
